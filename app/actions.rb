@@ -7,7 +7,7 @@ def humanized_time_ago(time_ago_in_minutes)
 end
 
 get '/' do
-    finstagram_post_shark = {
+    @finstagram_post_shark = {
         username: "sharky_j",
         avatar_url: "https://naserca.com/images/sharky_j.jpg",
         photo_url: "https://naserca.com/images/shark.jpg",
@@ -20,7 +20,7 @@ get '/' do
         }]
     }
 
-    finstagram_post_whale = {
+    @finstagram_post_whale = {
         username: "kirk_whalum",
         avatar_url: "https://naserca.com/images/kirk_whalum.jpg",
         photo_url: "https://naserca.com/images/whale.jpg",
@@ -33,10 +33,10 @@ get '/' do
         }]
     }
 
-    finstagram_post_marlin = {
+    @finstagram_post_marlin = {
         username: "marlin_peppa",
         avatar_url: "https://naserca.com/images/marlin_peppa.jpg",
-        photo_url: "https://naserca.com/images/marlin",
+        photo_url: "https://naserca.com/images/marlin.jpg",
         humanized_time_ago: humanized_time_ago(190),
         like_count: 0,
         comment_count: 1,
@@ -45,5 +45,10 @@ get '/' do
             text: "lunchtime! ;)"
         }]
     }
-    [finstagram_post_shark, finstagram_post_whale, finstagram_post_marlin].to_s
+
+    [@finstagram_post_shark, @finstagram_post_whale, @finstagram_post_marlin].to_s
+
+    @finstagram_posts = [@finstagram_post_shark, @finstagram_post_whale, @finstagram_post_marlin]
+    
+    erb(:index)
 end
